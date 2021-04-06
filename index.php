@@ -1,12 +1,14 @@
 <?php
 
-// require './vendor/JSONReader.php';
+require './vendor/JSONReader.php';
 
-// $userListArray = JSONReader('./dataset/users-management-system.json');
+$userListArray = JSONReader('./dataset/users-management-system.json');
 
-// $userListObj = (array_map(function($user){
+$userListObj = array_map(function($user){
 
-// }, $userListArray);
+    return new User ($user['userId'], $user['firstName'], $user['lastName'], $user['email'], $user['birthday']);
+}, $userListArray);
+
 
 
 ?>
