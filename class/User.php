@@ -24,4 +24,12 @@ class User
         $today = new DateTime();
         return $today->diff($dateBt)->y;
     }
+
+    public function isAdult($age){
+        if($age>=18){
+            return "maggiorenne";
+        }else{
+            return "minorenne";
+        }
+    }
 }
