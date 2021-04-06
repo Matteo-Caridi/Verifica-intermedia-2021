@@ -1,12 +1,13 @@
 <?php
 
 require './vendor/JSONReader.php';
+require './class/User.php';
 
 $userListArray = JSONReader('./dataset/users-management-system.json');
 
-$userListObj = array_map(function($user){
 
-    return new User ($user['userId'], $user['firstName'], $user['lastName'], $user['email'], $user['birthday']);
+$userListObj = array_map(function($user){
+    return new User ($user['id'], $user['firstName'], $user['lastName'], $user['email'], $user['birthday']);
 }, $userListArray);
 
 
@@ -31,7 +32,7 @@ $userListObj = array_map(function($user){
         }
     </style>
 </head>
-
+<form action="./index.php">
 <body>
     <header class="container-fluid bg-secondary text-light p-2">
         <div class="container">
@@ -71,25 +72,24 @@ $userListObj = array_map(function($user){
                     <input class="form-control" type="text">
                 </th>
                 <th>
-                    <button class="btn btn-primary">cerca</button>
+                    <button class="btn btn-primary" type="submit">cerca</button>
                 </th>
             </tr>
+            <?php foreach ($userListObj as $user) {?>
+                
+            
             <tr>
-                <td>10</td>
-                <td>Mario</td>
-                <td>Rossi</td>
-                <td>mariorossi@email.com</td>
-                <td>15 </td>
+                <td><?= $user-> getUserId()?></td>
+                <td><?= $user->getFirstName()?></td>
+                <td><?= $user->getLastName()?></td>
+                <td><?= $user->getEmail() ?></td>
+                <td><?= $user->getAge() ?> </td>
+                <td><?= $user->isAdult($user->getAge()) ?> </td>
             </tr>
-            <tr>
-                <td>13</td>
-                <td>Mario</td>
-                <td>Mario</td>
-                <td>mariomario@email.com</td>
-                <td>20 </td>
-            </tr>
+            <?php }?>
+        
         </table>
     </div>
 </body>
-
+</form>
 </html>
