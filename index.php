@@ -1,3 +1,16 @@
+<?php
+
+// require './vendor/JSONReader.php';
+
+// $userListArray = JSONReader('./dataset/users-management-system.json');
+
+// $userListObj = (array_map(function($user){
+
+// }, $userListArray);
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 
