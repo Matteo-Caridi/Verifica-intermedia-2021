@@ -31,19 +31,19 @@ Visualizzare l'elenco degli **Users**.
 
 ## Implementare le funzionalità di ricercha 
 
-- [ ] Implementare le ricerche per presenti nell'intestazione della tabella.
+- [x] Implementare le ricerche per presenti nell'intestazione della tabella.
 
-    - [ ] findByFirstName
-    - [ ] findByLastName
-    - [ ] findByAge (età)
+    - [x] findByFirstName
+    - [x] findByLastName
+    - [x] findByAge (età)
 
 ---  
 
 ## Implementazioni aggiuntive
 
-- [ ] Implementare le ricerche per presenti nell'intestazione della tabella.
+- [x] Implementare le ricerche per presenti nell'intestazione della tabella.
 
-    - [ ] findByUserId
-    - [ ] findByEmail
+    - [x] findByUserId
+    - [x] findByEmail
 
 - [ ] Realizzare separatamente il layout [raggruppa per cognome in ordine alfabetico](./group_by_last_name.html)

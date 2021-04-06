@@ -1,5 +1,6 @@
 <?php
 
+require './lib/UsersSearchFunctions.php';
 require './vendor/JSONReader.php';
 require './class/User.php';
 
@@ -10,6 +11,35 @@ $userListObj = array_map(function($user){
     return new User ($user['id'], $user['firstName'], $user['lastName'], $user['email'], $user['birthday']);
 }, $userListArray);
 
+
+if (isset($_GET['searchId']) && ($_GET['searchId'] !== "")) {
+
+    $searchId = trim(filter_var($_GET['searchId'], FILTER_SANITIZE_STRING));
+    $userListObj = array_filter($userListObj, searchId($searchId));  
+}
+
+if (isset($_GET['searchFirstName']) && ($_GET['searchFirstName'] !== "")) {
+
+    $searchFirstName = trim(filter_var($_GET['searchFirstName'], FILTER_SANITIZE_STRING));
+    $userListObj = array_filter($userListObj, searchFirstName($searchFirstName));  
+}
+
+if (isset($_GET['searchLastName']) && ($_GET['searchLastName'] !== "")) {
+
+    $searchLastName = trim(filter_var($_GET['searchLastName'], FILTER_SANITIZE_STRING));
+    $userListObj = array_filter($userListObj, searchLastName($searchLastName));  
+}
+
+
+if (isset($_GET['searchMail']) && ($_GET['searchMail'] !== "")) {
+    $searchMail = $_GET['searchMail'];
+    $userListObj = array_filter($userListObj, searchMail($searchMail));
+}
+
+if (isset($_GET['searchAge']) && ($_GET['searchAge'] !== "")) {
+    $searchAge = trim(filter_var($_GET['searchAge'], FILTER_SANITIZE_STRING));
+    $userListObj = array_filter($userListObj, searchAge($_GET['searchAge']));
+}
 
 
 ?>
@@ -32,7 +62,7 @@ $userListObj = array_map(function($user){
         }
     </style>
 </head>
-<form action="./index.php">
+<form action="./index.php" method="GET">
 <body>
     <header class="container-fluid bg-secondary text-light p-2">
         <div class="container">
@@ -49,27 +79,32 @@ $userListObj = array_map(function($user){
                 <th>nome</th>
                 <th>cognome</th>
                 <th>email</th>
-                <th cellspan="2">età</th>
+                <th>età</th>
             </tr>
             <tr>
                 <th>
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" placeholder ="Inserire id" id="searchId" name="searchId"
+                    value="<?php if(isset($_GET['searchId'])) {echo $_GET['searchId'];}else{echo "";}?>">
                 </th>
 
                 <th>
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" placeholder ="Inserire nome" id="searchFirstName" name="searchFirstName"
+                    value="<?php if(isset($_GET['searchFirstName'])){echo $_GET['searchFirstName'];}else{echo "";} ?>">
                 </th>
 
                 <th>
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" placeholder ="Inserire cognome" id="searchLastName" name="searchLastName"
+                    value="<?php if(isset($_GET['searchLastName'])){echo $_GET['searchLastName'];}else{echo "";} ?>">
                 </th>
 
                 <th>
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" placeholder ="Inserire email" id="searchMail" name="searchMail"
+                    value="<?php if(isset($_GET['searchMail'])){echo $_GET['searchMail'];}else{echo "";} ?>">
                 </th>
 
                 <th>
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" placeholder ="Inserire età" id="searchAge" name="searchAge"
+                    value="<?php if(isset($_GET['searchAge'])){echo $_GET['searchAge'];}else{echo "";} ?>">
                 </th>
                 <th>
                     <button class="btn btn-primary" type="submit">cerca</button>
