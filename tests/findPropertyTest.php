@@ -35,5 +35,11 @@ foreach ($testResultsDataset as $row) {
 		/**
 		 * scrivi qui il tuo test
 		 */
-        
+			
+		if ($users['lastName'] == $row['lastName']) {
+
+			echo "Test passato - tutto ok nella linea: $line \n";
+		} else {
+			echo "Test NON passato nella linea: $line \n";
+		}
 }
