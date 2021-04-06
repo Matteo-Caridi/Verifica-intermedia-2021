@@ -23,9 +23,7 @@ class User
     
     public function getAge()
     {
-
-        return floor((time() - strtotime($this->birthday)) / 31556926);
-        
+        return floor((time() - strtotime($this->birthday)) / 31556926);   
     }
 
     public function isAdult($age){
