@@ -32,11 +32,14 @@ assertEquals(true, $user->isAdult(), 'se hai 19 anni sei adulto');
 //per calcolare gli anni
 $user -> setBirthday('2000-01-01');
 assertEquals(5, $user->getAge('2005-01-01'), 'un utente nato il 1 gennaio 2000, nel 2005 ha 5 anni');
-assertEquals(false, $user->isAdult(), 'se hai 5 anni non sei adulto');
+assertEquals(false, $user->isAdult('2000-01-01'), 'se hai 5 anni non sei adulto');
 
 $user -> setBirthday('2000-01-02');
-assertEquals(false, $user->isAdult(), 'se hai 17 anni non sei adulto');
+assertEquals(false, $user->isAdult('2018-01-01'), 'se hai 17 anni non sei adulto');
 
 $user -> setBirthday('2000-01-01');
-assertEquals(true, $user->isAdult(), 'se hai 17 anni non sei adulto');
+assertEquals(true, $user->isAdult('2018-01-01'), 'se hai 18 anni sei adulto');
+
+$user -> setBirthday('2000-01-01');
+assertEquals(true, $user->isAdult('2018-01-03'), 'se hai 18 anni sei adulto');
 
