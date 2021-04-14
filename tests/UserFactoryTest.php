@@ -26,8 +26,17 @@ assertEquals('2001-07-21', $user -> getBirthday(), 'Ottengo una versione sanific
 
 assertEquals(19, $user->getAge()); //oggi
 assertEquals(19, $user-> getAge('2021-04-14'));
+assertEquals(true, $user->isAdult(), 'se hai 19 anni sei adulto');
 
 //metodo flessibile: impostiamo una data come argomento e facciamo la differenza
 //per calcolare gli anni
 $user -> setBirthday('2000-01-01');
 assertEquals(5, $user->getAge('2005-01-01'), 'un utente nato il 1 gennaio 2000, nel 2005 ha 5 anni');
+assertEquals(false, $user->isAdult(), 'se hai 5 anni non sei adulto');
+
+$user -> setBirthday('2000-01-02');
+assertEquals(false, $user->isAdult(), 'se hai 17 anni non sei adulto');
+
+$user -> setBirthday('2000-01-01');
+assertEquals(true, $user->isAdult(), 'se hai 17 anni non sei adulto');
+

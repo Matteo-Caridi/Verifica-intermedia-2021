@@ -20,29 +20,30 @@ class User
         $this->birthday = $birthday;
         $this->email = $email;
     }
-    
+
     //secondo il metodo del prof:
-    public function getAge($today ='now')
+    public function getAge($today = 'now')
     {
         $todayDateTime = new DateTime($today);
         $userDateTime = new DateTime($this->birthday);
 
-        $ageDateInterval = $todayDateTime -> diff($userDateTime);
-        return $ageDateInterval -> y;
+        $ageDateInterval = $todayDateTime->diff($userDateTime);
+        return $ageDateInterval->y;
         // return floor((time() - strtotime($this->birthday)) / 31556926); 
     }
 
-    public function isAdult($age){
-        if($age>=18){
-            return "maggiorenne";
-        }else{
-            return "minorenne";
+    public function isAdult()
+    {
+        if ($this->getAge() >= 18) {
+            return "true";
+        } else {
+            return "false";
         }
     }
 
     /**
      * Get the value of userId
-     */ 
+     */
     public function getUserId()
     {
         return $this->userId;
@@ -50,7 +51,7 @@ class User
 
     /**
      * Get the value of firstName
-     */ 
+     */
     public function getFirstName()
     {
         return $this->firstName;
@@ -58,7 +59,7 @@ class User
 
     /**
      * Get the value of lastName
-     */ 
+     */
     public function getLastName()
     {
         return $this->lastName;
@@ -66,7 +67,7 @@ class User
 
     /**
      * Get the value of email
-     */ 
+     */
     public function getEmail()
     {
         return $this->email;
@@ -77,7 +78,7 @@ class User
      * Set the value of lastName
      *
      * @return  self
-     */ 
+     */
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
@@ -89,7 +90,7 @@ class User
      * Set the value of firstName
      *
      * @return  self
-     */ 
+     */
     public function setFirstName($firstName)
     {
         $this->firstName = $firstName;
@@ -99,7 +100,7 @@ class User
 
     /**
      * Get the value of birthday
-     */ 
+     */
     public function getBirthday()
     {
         return $this->birthday;
@@ -109,7 +110,7 @@ class User
      * Set the value of email
      *
      * @return  self
-     */ 
+     */
     public function setEmail($email)
     {
         $this->email = $email;
@@ -121,7 +122,7 @@ class User
      * Set the value of birthday
      *
      * @return  self
-     */ 
+     */
     public function setBirthday($birthday)
     {
         $this->birthday = $birthday;
@@ -134,7 +135,7 @@ class User
      * Set the value of userId
      *
      * @return  self
-     */ 
+     */
     public function setUserId($userId)
     {
         $this->userId = $userId;
