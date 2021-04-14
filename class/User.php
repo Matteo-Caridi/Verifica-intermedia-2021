@@ -21,9 +21,15 @@ class User
         $this->email = $email;
     }
     
-    public function getAge()
+    //secondo il metodo del prof:
+    public function getAge($today ='now')
     {
-        return floor((time() - strtotime($this->birthday)) / 31556926);   
+        $todayDateTime = new DateTime($today);
+        $userDateTime = new DateTime($this->birthday);
+
+        $ageDateInterval = $todayDateTime -> diff($userDateTime);
+        return $ageDateInterval -> y;
+        // return floor((time() - strtotime($this->birthday)) / 31556926); 
     }
 
     public function isAdult($age){
