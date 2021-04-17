@@ -1,9 +1,9 @@
 <?php
 
-require '../vendor/sanitizeName.php';
-require '/../vendor/UserFunctions.php';
-require '/../class/User.php';
-require '/../vendor/testTools/testTool.php';
+require __DIR__.'/../vendor/testTools/testTool.php';
+require __DIR__.'/../vendor/sanitizeName/sanitizeName.php';
+require __DIR__.'/../lib/UsersFunctions.php';
+require __DIR__.'/../class/User.php';
 
 $userData = [
     "id"=> 15,
