@@ -21,16 +21,22 @@ class User
         $this->email = $email;
     }
     
-    public function getAge()
+    //secondo il metodo del prof:
+    public function getAge($today ='now')
     {
-        return floor((time() - strtotime($this->birthday)) / 31556926);   
+        $todayDateTime = new DateTime($today);
+        $userDateTime = new DateTime($this->birthday);
+
+        $ageDateInterval = $todayDateTime -> diff($userDateTime);
+        return $ageDateInterval -> y;
+        // return floor((time() - strtotime($this->birthday)) / 31556926); 
     }
 
-    public function isAdult($age){
-        if($age>=18){
-            return "maggiorenne";
+    public function isAdult($today = 'now'){
+        if($this->getAge($today)>=18){
+            return "true";
         }else{
-            return "minorenne";
+            return "false";
         }
     }
 
@@ -66,4 +72,73 @@ class User
         return $this->email;
     }
 
+
+    /**
+     * Set the value of lastName
+     *
+     * @return  self
+     */ 
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Set the value of firstName
+     *
+     * @return  self
+     */ 
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of birthday
+     */ 
+    public function getBirthday()
+    {
+        return $this->birthday;
+    }
+
+    /**
+     * Set the value of email
+     *
+     * @return  self
+     */ 
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Set the value of birthday
+     *
+     * @return  self
+     */ 
+    public function setBirthday($birthday)
+    {
+        $this->birthday = $birthday;
+
+        return $this;
+    }
+
+
+    /**
+     * Set the value of userId
+     *
+     * @return  self
+     */ 
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
 }
